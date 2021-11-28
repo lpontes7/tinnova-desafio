@@ -1,0 +1,7 @@
+.idea/
+.vscode/
+pgdata/
+node_modules/
+build/
+tmp/
+temp/
