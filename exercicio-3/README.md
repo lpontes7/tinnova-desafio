@@ -21,7 +21,7 @@ Use o comando
 npm i 
 ```
 
-### 1.3 Rodar Projeto
+### 1.4 Rodar Projeto
 
 Use o comando 
 
