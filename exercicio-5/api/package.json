@@ -27,6 +27,6 @@
    "scripts": {
       "start": "ts-node src/server.ts",
       "dev": "nodemon --exerc ts-node src/server.ts",
-      "test": "jest --forceExit --detectOpenHandles"
+      "test": "jest"
    }
 }
