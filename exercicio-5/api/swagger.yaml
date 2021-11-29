@@ -1,0 +1,159 @@
+paths:
+# [GET] veiculos
+  /veiculo:
+    get:
+      tags:
+      - veiculo
+      summary: Find All veiculos
+      parameters:
+      - name: order
+        in: query
+        description: ASC || DESC
+        required: false
+        type: string       
+      - name: orderBy
+        in: query
+        description: veiculo || marca || ano || vendido
+        required: false
+        type: string    
+      - name: naoVendidos
+        in: query
+        description: true || false
+        required: false
+        type: boolean  
+      - name: decada
+        in: query
+        description: 1980 || 1990 || 2000 
+        required: false
+        type: integer   
+      - name: marca
+        in: query
+        description: nome da marca 
+        required: false
+        type: string
+      - name: ultimaSemana
+        in: query
+        description: true || false
+        required: false
+        type: boolean    
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [POST] veiculo
+    post:
+      tags:
+      - veiculo
+      summary: Adicionando um veiculo 
+      requestBody:
+        description: dto cria veiculo
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/veiculo'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        500:
+          description: 'Server Error'
+
+# [PATCH] veiculos/id
+    patch:
+      tags:
+      - veiculo
+      summary: Atualizaer veiculo pelo Id
+      parameters:
+      - name: id
+        in: query
+        description: veiculo Id
+        required: true
+        type: integer
+      - name: body
+        in: body
+        description: veiculo atualizar
+        required: true
+        schema:
+          $ref: '#/definitions/veiculoAtualizacao'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] veiculos/id
+    delete:
+      tags:
+      - veiculo
+      summary: Delete veiculo By Id
+      parameters:
+      - name: id
+        in: query
+        description: veiculo Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  veiculo:
+    type: object
+    required:
+        - veiculo
+        - marca
+        - ano
+        - descricao
+        - vendido
+    properties:
+      veiculo:
+        type: string
+        description: nome do veiculo
+      marca:
+        type: string
+        description: marca do veiculo
+      ano:
+        type: integer
+        description: ano do veiculo
+      descricao:
+        type: string
+        description: descricao do veiculo
+      vendido:
+        type: boolean
+        description: carro vendido 
+      
+  veiculoAtualizacao:
+    type: object
+    properties:   
+      veiculo:
+        type: string
+        description: nome do veiculo
+      marca:
+        type: string
+        description: marca do veiculo
+      ano:
+        type: integer
+        description: ano do veiculo
+      descricao:
+        type: string
+        description: descricao do veiculo
+      vendido:
+        type: boolean
+        description: carro vendido         
+        
+schemes:
+ - https
+ - http
