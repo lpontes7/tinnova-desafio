@@ -1,2 +1,6 @@
 # tinnova-desafio
-tinnova desafio nodeJs
+
+Cada pasta contem seu proprio readme.
+
+
+ 
